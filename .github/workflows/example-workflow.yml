@@ -15,6 +15,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print to Log
-        id: print-to-log
-        uses: publish-site/action@main
+      - uses: actions/checkout@v4
+      - name: publish-site
+        uses: ./
+        with:
+          dry_run: true
+          url: https://127.0.0.1
