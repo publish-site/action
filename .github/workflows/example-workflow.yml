@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     dry_run: 
       description: "Make no changes"
-      required: false
+      required: true
       default: false
       type: boolean
 
