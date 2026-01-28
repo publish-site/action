@@ -3,10 +3,12 @@ name: Deploy
 
 on:
   workflow_dispatch:
-    dry_run: 
-      description: "Make no changes"
-      required: true
-      type: boolean
+    inputs:
+      dry_run: 
+        description: "Make no changes"
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   deploy:
