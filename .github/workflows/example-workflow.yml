@@ -1,0 +1,20 @@
+# EXAMPLE WORKFLOW
+name: Deploy
+
+on:
+  workflow_dispatch:
+    dry_run: 
+      description: "Make no changes"
+      required: false
+      default: false
+      type: boolean
+
+jobs:
+  deploy:
+    name: Deployment
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print to Log
+        id: print-to-log
+        uses: publish-site/action@main
