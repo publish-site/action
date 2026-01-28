@@ -1,5 +1,6 @@
 name: Publish site
 description: Publish your site to a website
+icon: upload-cloud
 author: a-rvid
 
 # Define your inputs here.
