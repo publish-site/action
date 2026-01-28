@@ -6,7 +6,6 @@ on:
     dry_run: 
       description: "Make no changes"
       required: true
-      default: false
       type: boolean
 
 jobs:
