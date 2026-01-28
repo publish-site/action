@@ -1,0 +1,21 @@
+name: Publish site
+description: Publish your site to a website
+author: a-rvid
+
+# Define your inputs here.
+inputs:
+  dry_run:
+    description: "Run and authenticate, but never write or remove."
+    required: false
+  url:
+    description: "URL to send the data"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - run: ${{ github.action_path }}/deploy.sh 
+      env:
+        URL: ${{inputs.url}}
+        DRY_RUN: ${{inputs.dry_run}}
+      shell: bash
