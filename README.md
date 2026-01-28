@@ -3,7 +3,7 @@
 
 GitHub actions simple publishment workflow 
 
-> [!IMPORTANT]
+> [!WARNING]
 > This workflow is not complete! Do NOT use!
 
 ## Simple 
