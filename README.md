@@ -1,7 +1,8 @@
 # GitHub action --> Publishment workflow 
 
+## Why?
 
-GitHub actions simple publishment workflow 
+Have you ever used anything else than GitHub for your repositories, while still hosting a website? Or perhaps you wanted your site to be more than static. This project aims to solve that problem in a safe and simple way, by making a GitHub pages-like experience with little configuration required. It will also allow for advanced features, such as databases, PHP and Server Side Inclusions, if requested. 
 
 > [!WARNING]
 > This workflow is not complete! Do NOT use!
