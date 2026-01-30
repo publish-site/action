@@ -16,4 +16,6 @@ if [[ -d "${TARGET}" ]]; then
   
 fi
 
-curl --data-binary @upload.tar.gz -X POST -A "$agent" "${URL}"
+base64 upload.tar.gz > encoded
+
+curl -T 'encoded' -A "$agent" "${URL}" -vv
