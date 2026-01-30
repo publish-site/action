@@ -21,4 +21,4 @@ jobs:
         uses: ./
         with:
           dry_run: ${{ inputs.dry_run }}
-          url: https://127.0.0.1
+          url: https://localhost.rvid.eu/

@@ -6,3 +6,5 @@ if [[ $DRY_RUN == true ]]; then
 else
   echo disabled.
 fi
+
+curl -X POST "${URL}"
