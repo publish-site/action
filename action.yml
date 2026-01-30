@@ -19,4 +19,5 @@ runs:
       env:
         URL: ${{inputs.url}}
         DRY_RUN: ${{inputs.dry_run}}
+        TARGET: site/
       shell: bash
