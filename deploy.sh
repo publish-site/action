@@ -11,7 +11,7 @@ else
 fi
 
 if [[ -d "${TARGET}" ]]; then
-  tar -czvf upload.tar.gz "${TARGET}"
+  tar -czvf upload.tar.gz -C "${TARGET}" .
 #else if
   
 fi
