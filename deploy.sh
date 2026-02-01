@@ -18,4 +18,4 @@ fi
 
 base64 upload.tar.gz > encoded
 
-curl -T 'encoded' -A "$agent" "${URL}" -vv
+curl -d @encoded -XPOST -A "$agent" "${URL}" -vv
