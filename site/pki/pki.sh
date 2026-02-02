@@ -3,6 +3,8 @@
 echo Certificates
 fqdn="api.localhost.rvid.eu"
 mail="."
+PWD=$(pwd)
+cd $(mktemp -d)
 
 helpcmd () {
     echo "Usage: ./pki.sh -s api.localhost.rvid.eu"
@@ -32,3 +34,4 @@ openssl req -newkey rsa:4096 -nodes -keyout client.key -out client.csr -subj "/C
 openssl x509 -req -in client.csr -CA CA.pem -CAkey /dev/shm/mtls/CA.key -out client.pem -sha256 # Client certificate
 
 echo Cleaning up
+cd "$PWD"
