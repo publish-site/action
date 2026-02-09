@@ -11,6 +11,15 @@ inputs:
   url:
     description: "URL to send the data"
     required: true
+  privkey:
+    description: "Client Private key"
+    required: true
+  cert:
+    description: "Client certificate (pubkey)"
+    required: true
+  dir:
+    description: "The directory to publish"
+    required: true
 
 runs:
   using: "composite"
@@ -19,5 +28,7 @@ runs:
       env:
         URL: ${{inputs.url}}
         DRY_RUN: ${{inputs.dry_run}}
-        TARGET: site/
+        TARGET: ${{inputs.dir}}
+        PRIVKEY: ${{inputs.privkey}}
+        CERT: ${{inputs.cert}}
       shell: bash

@@ -20,5 +20,8 @@ jobs:
       - name: publish-site
         uses: ./
         with:
+          dir: site/
           dry_run: ${{ inputs.dry_run }}
           url: https://localhost.rvid.eu/
+          privkey: ${{ secrets.PRIVKEY }}
+          cert: ${{ secrets.CERT }}
