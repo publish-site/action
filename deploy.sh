@@ -19,14 +19,14 @@ else
 fi
 
 if [[ -n "$PRIVKEY" ]]; then
-  base64 -d <<< "$PRIVKEY" > "$TMP/client.key"
+  echo "$PRIVKEY" > "$TMP/client.key"
 else
   echo "Private key (privkey input) not set. Exiting"
   exit 1
 fi
 
 if [[ -n "$CERT" ]]; then
-  base64 -d <<< "$CERT" > "$TMP/client.crt"
+  echo "$CERT" > "$TMP/client.crt"
 else
   echo "Certificate (cert input) not set. Exiting"
   exit 1
