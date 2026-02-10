@@ -15,4 +15,4 @@ The ideology is to maintain security and privacy while keeping the config as lit
 
 * Thanks for GitHub for providing me with documentation and examples
 
-I have not utilized artificial intelligence in this project just to learn more, however it is likely that DuckDuckGo's "search assist" summarized some documentation.
+Usage of generative AI or LLMs have been intentionally avoided to be used in this project, potentially with the exception of security revisations and individual code problems and research when learning.
