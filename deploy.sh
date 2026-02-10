@@ -32,4 +32,4 @@ else
   exit 1
 fi
 
-base64 "$TMP/upload.tar.gz" | curl -d @- -A "$agent" "${URL}" -vv --cert "$TMP/client.pem" --key "$TMP/client.key"
+base64 "$TMP/upload.tar.gz" | curl -d @- -A "$agent" "${URL}" -vv --cert "$TMP/client.crt" --key "$TMP/client.key"
