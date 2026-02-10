@@ -26,10 +26,10 @@ else
 fi
 
 if [[ -n "$CERT" ]]; then
-  base64 -d <<< "$PRIVKEY" > "$TMP/client.key"
+  base64 -d <<< "$CERT" > "$TMP/client.crt"
 else
   echo "Certificate (cert input) not set. Exiting"
   exit 1
 fi
 
-base64 "$TMP/upload.tar.gz" | curl -d @- -A "$agent" "${URL}" -vv --cert /tmp/client.key
+base64 "$TMP/upload.tar.gz" | curl -d @- -A "$agent" "${URL}" -vv --cert "$TMP/client.pem" --key "$TMP/client.key"
