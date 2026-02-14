@@ -1,7 +1,9 @@
 name: Publish site
 description: Publish your site to a website
-icon: upload-cloud
 author: a-rvid
+branding:
+  icon: upload-cloud
+  color: white
 
 # dry_run makes it not write on the server.
 inputs:
