@@ -9,6 +9,17 @@ The project is split into two repositories, the action (this repo), and the [bac
 You can access a small demo [Here](https://publish-site.rvid.eu/demo/). If you wanna see how the workflow itself is used, go [here](https://github.com/publish-site/docs/actions/workflows/workflow.yml)
 [Documentation](https://publish-site.rvid.eu)
 
+## Deployment
+
+```yaml { .copy }
+  - uses: publish-site/action@INDEV
+    with:
+        dir: dir/ # CHANGEME
+        url: https://example.com/ # CHANGEME
+        privkey: ${{ secrets.PRIVKEY }}
+        cert: ${{ secrets.CERT }}
+```
+
 ## Limitations
 
 * At the moment, the NGINX configuration only allows sites to about 2000M (before compression). This can however be changed in the configuration of the container.
