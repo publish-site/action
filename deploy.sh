@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 TMP=$(mktemp -d)
 printf "Dry run: "
 
