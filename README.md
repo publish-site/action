@@ -12,7 +12,7 @@ You can access a small demo [Here](https://publish-site.rvid.eu/demo/). If you w
 ## Deployment
 
 ```yaml { .copy }
-  - uses: publish-site/action@INDEV
+  - uses: publish-site/action@v1
     with:
         dir: dir/ # CHANGEME
         url: https://example.com/ # CHANGEME
