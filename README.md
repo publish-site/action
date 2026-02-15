@@ -22,7 +22,6 @@ You can access a small demo [Here](https://publish-site.rvid.eu/demo/). If you w
 
 ## Limitations
 
-* At the moment, the NGINX configuration only allows sites to about 2000M (before compression). This can however be changed in the configuration of the container.
 * Non-repudiation (for the server party) and integrity has not been implemented yet.
 
 ## License
