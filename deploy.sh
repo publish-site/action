@@ -3,6 +3,7 @@
 set -euo pipefail
 
 TMP=$(mktemp -d)
+arg=""
 printf "Dry run: "
 
 if [[ $DRY_RUN == true ]]; then 
