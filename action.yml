@@ -10,6 +10,9 @@ inputs:
   dry_run:
     description: "Run and authenticate, but never write or remove."
     required: false
+  insecure: 
+    description: "Allow self-signed certificates."
+    required: false
   url:
     description: "URL to send the data"
     required: true
@@ -28,6 +31,7 @@ runs:
   steps:
     - run: ${{ github.action_path }}/deploy.sh 
       env:
+        INSECURE: ${{inputs.insecure}}
         URL: ${{inputs.url}}
         DRY_RUN: ${{inputs.dry_run}}
         TARGET: ${{inputs.dir}}

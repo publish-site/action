@@ -13,6 +13,10 @@ else
   agent="Actions"
 fi
 
+if [[ -n "${INSECURE}" ]]; then
+  arg="-k"
+fi
+
 if [[ -n "${TARGET}" ]]; then
   tar -czvf "$TMP/upload.tar.gz" -C "${TARGET}" .
 else
@@ -34,4 +38,4 @@ else
   exit 1
 fi
 
-base64 "$TMP/upload.tar.gz" | curl -d @- -A "$agent" "${URL}" -vv --cert "$TMP/client.crt" --key "$TMP/client.key"
+base64 "$TMP/upload.tar.gz" | curl -d @- -A "$agent" "${URL}" -vv --cert "$TMP/client.crt" --key "$TMP/client.key" $arg
