@@ -22,6 +22,6 @@ jobs:
         with:
           dir: site/
           dry_run: ${{ inputs.dry_run }}
-          url: https://localhost.rvid.eu/
+          url: https://localhost.rvid.eu/api
           privkey: ${{ secrets.PRIVKEY }}
           cert: ${{ secrets.CERT }}
