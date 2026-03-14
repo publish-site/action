@@ -4,15 +4,17 @@ set -euo pipefail
 
 TMP=$(mktemp -d)
 
-if ![[ -n "${TARGET}" ]]; then
+if [[ ! -n "${TARGET}" ]]; then
   echo "Target directory not set. Exiting"
   exit 1
 fi
 
-if ![[ -n "$URL" ]]; then
-  if ![[ -n "$IP" ]]; then
+if [[ ! -n "$URL" ]]; then
+  if [[ ! -n "$IP" ]]; then
     echo "No URL or IP found. Exiting"
     exit 1
+  else
+    export URL="$IP"
   fi
 fi
 
