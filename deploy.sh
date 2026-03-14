@@ -44,7 +44,7 @@ rsync -avz --delete --progress --stats --human-readable \
   "$TARGET"/ root@"$URL":/var/www/html/
 
 echo "Setting permissions..."
-ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p2222 -i "$TMP/ssh.key" root@"$URL" "chown -R www-data:www-data /var/www/html/"
+ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p2222 -i "$TMP/ssh.key" root@"$URL" "chown -R nginx:nginx /var/www/html/"
 
 rm -rf "$TMP"
 
