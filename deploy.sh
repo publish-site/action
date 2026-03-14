@@ -30,7 +30,7 @@ fi
 chmod 600 "$TMP/ssh.key"
 
 echo "Removing old files..."
-ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p2222 -i "$TMP/ssh.key" root@"$URL" "rm -rf /var/www/html/"
+ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p2222 -i "$TMP/ssh.key" root@"$URL" "rm -rf /var/www/html/*"
 
 echo "Creating new directories..."
 ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p2222 -i "$TMP/ssh.key" root@"$URL" "mkdir -p /var/www/html/"
