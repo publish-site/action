@@ -35,7 +35,6 @@ rsync -avz --delete --progress --human-readable \
   --exclude=".git" \
   --exclude=".github" \
   --exclude="node_modules" \
-  -e "ssh -i /path/to/private_key -p 2222" \
-  . \
-  root@$URL:/var/www/html/
+  -e "ssh -i $TMP/ssh.key -p 2222" \
+  . root@$URL:/var/www/html/
 ssh -c "chown -R www-data:www-data /var/www/html/" root@$URL
