@@ -29,12 +29,12 @@ fi
 
 echo "Deploying to $URL..."
 cd "$TARGET"
-ssh -c "rm -rf /var/www/html/" root@$URL
-ssh -c "mkdir -p /var/www/html/" root@$URL
+ssh root@$URL -i $TMP/ssh.key "rm -rf /var/www/html/"
+ssh root@$URL -i $TMP/ssh.key "mkdir -p /var/www/html/"
 rsync -avz --delete --progress --human-readable \
   --exclude=".git" \
   --exclude=".github" \
   --exclude="node_modules" \
   -e "ssh -i $TMP/ssh.key -p 2222" \
   . root@$URL:/var/www/html/
-ssh -c "chown -R www-data:www-data /var/www/html/" root@$URL
+ssh root@$URL -i $TMP/ssh.key "chown -R www-data:www-data /var/www/html/"
