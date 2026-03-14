@@ -29,14 +29,14 @@ fi
 
 echo "Removing old files..."
 cd "$TARGET"
-ssh root@$URL -i $TMP/ssh.key "rm -rf /var/www/html/" -p2222
-ssh root@$URL -i $TMP/ssh.key "mkdir -p /var/www/html/" -p2222
+ssh -p2222 root@$URL -i $TMP/ssh.key "rm -rf /var/www/html/" 
+ssh -p2222 root@$URL -i $TMP/ssh.key "mkdir -p /var/www/html/"
 echo "Deploying to $URL..."
 rsync -avz --delete --progress --stats --human-readable \
   --exclude=".git" \
   --exclude=".github" \
   --exclude="node_modules" \
-  -e "ssh -i $TMP/ssh.key -p2222" \
+  -e "ssh -p2222 -i $TMP/ssh.key" \
   . root@$URL:/var/www/html/
 echo "Setting permissions..."
-ssh root@$URL -i $TMP/ssh.key "chown -R www-data:www-data /var/www/html/" -p2222
+ssh -p2222 root@$URL -i $TMP/ssh.key "chown -R www-data:www-data /var/www/html/"
