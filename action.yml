@@ -5,23 +5,19 @@ branding:
   icon: upload-cloud
   color: white
 
-# dry_run makes it not write on the server.
 inputs:
-  dry_run:
-    description: "Run and authenticate, but never write or remove."
-    required: false
-  insecure: 
-    description: "Allow self-signed certificates."
-    required: false
   url:
-    description: "URL to send the data"
-    required: true
+    description: "URL or IP to send the data"
+    required: false
+  ip:
+    description: "IP to send the data"
+    required: false
   privkey:
     description: "Client Private key"
-    required: true
+    required: false 
   cert:
     description: "Client certificate (pubkey)"
-    required: true
+    required: false
   dir:
     description: "The directory to publish"
     required: true
@@ -31,9 +27,8 @@ runs:
   steps:
     - run: ${{ github.action_path }}/deploy.sh 
       env:
-        INSECURE: ${{inputs.insecure}}
         URL: ${{inputs.url}}
-        DRY_RUN: ${{inputs.dry_run}}
+        IP: ${{inputs.ip}}
         TARGET: ${{inputs.dir}}
         PRIVKEY: ${{inputs.privkey}}
         CERT: ${{inputs.cert}}

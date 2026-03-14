@@ -3,40 +3,37 @@
 set -euo pipefail
 
 TMP=$(mktemp -d)
-arg=""
-printf "Dry run: "
 
-if [[ $DRY_RUN == true ]]; then 
-  echo enabled.
-  agent="DRY"
-else
-  echo disabled.
-  agent="Actions"
-fi
-
-if [[ -n "${INSECURE}" ]]; then
-  arg="-k"
-fi
-
-if [[ -n "${TARGET}" ]]; then
-  tar -czvf "$TMP/upload.tar.gz" -C "${TARGET}" .
-else
+if ![[ -n "${TARGET}" ]]; then
   echo "Target directory not set. Exiting"
   exit 1
 fi
 
+if ![[ -n "$URL" ]]; then
+  if ![[ -n "$IP" ]]; then
+    echo "No URL or IP found. Exiting"
+    exit 1
+  fi
+fi
+
 if [[ -n "$PRIVKEY" ]]; then
-  echo "$PRIVKEY" > "$TMP/client.key"
-else
-  echo "Private key (privkey input) not set. Exiting"
+  echo "$PRIVKEY" > "$TMP/ssh.key"
+else if [[ -n "$CERT" ]]; then
+    echo "$CERT" > "$TMP/ssh.key"
+else 
+  echo "No key found. Exiting"
   exit 1
 fi
 
-if [[ -n "$CERT" ]]; then
-  echo "$CERT" > "$TMP/client.crt"
-else
-  echo "Certificate (cert input) not set. Exiting"
-  exit 1
-fi
-
-base64 "$TMP/upload.tar.gz" | curl -d @- -A "$agent" "${URL}/api" -vv --cert "$TMP/client.crt" --key "$TMP/client.key" $arg
+echo "Deploying to $URL..."
+cd "$TARGET"
+ssh -c "rm -rf /var/www/html/" root@$URL
+ssh -c "mkdir -p /var/www/html/" root@$URL
+rsync -avz --delete --progress --human-readable \
+  --exclude=".git" \
+  --exclude=".github" \
+  --exclude="node_modules" \
+  -e "ssh -i /path/to/private_key -p 2222" \
+  . \
+  root@$URL:/var/www/html/
+ssh -c "chown -R www-data:www-data /var/www/html/" root@$URL
