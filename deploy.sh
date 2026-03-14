@@ -20,9 +20,9 @@ fi
 
 if [[ -n "$PRIVKEY" ]]; then
   echo "$PRIVKEY" > "$TMP/ssh.key"
-else if [[ -n "$CERT" ]]; then
-    echo "$CERT" > "$TMP/ssh.key"
-else 
+elif [[ -n "$CERT" ]]; then 
+  echo "$CERT" > "$TMP/ssh.key"
+else
   echo "No key found. Exiting"
   exit 1
 fi
