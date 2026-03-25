@@ -21,6 +21,15 @@ inputs:
   dir:
     description: "The directory to publish"
     required: true
+  port:
+    description: "SSH Port, default 2222"
+    required: false
+  user:
+    description: "SSH User, default root"
+    required: false
+  webdir:
+    description: "Output website directory, default /var/www/html"
+    required: false
 
 runs:
   using: "composite"
@@ -32,4 +41,7 @@ runs:
         TARGET: ${{inputs.dir}}
         PRIVKEY: ${{inputs.privkey}}
         CERT: ${{inputs.cert}}
+        PORT: ${{inputs.port}}
+        USR: ${{inputs.user}}
+        WEBDIR: ${{inputs.webdir}}
       shell: bash
